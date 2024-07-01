@@ -1,0 +1,6 @@
+@NoteBoardServer_HostAddress = http://localhost:5082
+
+GET {{NoteBoardServer_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
