@@ -1,5 +1,4 @@
 using Microsoft.EntityFrameworkCore;
-using NoteBoardServer.models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,12 +10,8 @@ builder.Services.AddControllers();
 
 // getting connection String
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddDbContext<NoteBoardDbContext>(options =>
-{
-    options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
-    options.LogTo(Console.WriteLine, LogLevel.Information);
-});
 
+Console.WriteLine(connectionString);
 var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

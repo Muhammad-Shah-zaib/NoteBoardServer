@@ -103,3 +103,4 @@
 /home/pace_setter/RiderProjects/DSA/NoteBoardServer/obj/Debug/net8.0/NoteBoardServer.pdb
 /home/pace_setter/RiderProjects/DSA/NoteBoardServer/obj/Debug/net8.0/NoteBoardServer.genruntimeconfig.cache
 /home/pace_setter/RiderProjects/DSA/NoteBoardServer/obj/Debug/net8.0/ref/NoteBoardServer.dll
+/home/pace_setter/RiderProjects/DSA/NoteBoardServer/obj/Debug/net8.0/NoteBoardServer.sourcelink.json
