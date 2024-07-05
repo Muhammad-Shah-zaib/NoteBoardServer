@@ -1,15 +1,19 @@
+using System.Security;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NoteBoardServer.Models;
 using NoteBoardServer.Models.DTOs.Notes;
+using NoteBoardServer.repositories;
+using NoteBoardServer.services;
 
 namespace NoteBoardServer.controllers;
 
 [ApiController]
 [Route("/api/[controller]")]
-public class NotesController (NoteBoardDbContext context): ControllerBase
+public class NotesController (NoteboardContext context, IUserRepository userRepository): ControllerBase
 {
-    private readonly NoteBoardDbContext _context = context;
+    private readonly NoteboardContext _context = context;
+    private readonly IUserRepository _userRepo = userRepository;
     
     [HttpGet]
     public async Task<IActionResult> GetNotes([FromQuery] int userId)
@@ -85,5 +89,32 @@ public class NotesController (NoteBoardDbContext context): ControllerBase
             });
         }
     }
-    
+
+    [HttpPut]
+    public async Task<IActionResult> UpdateNote([FromBody] UpdateNoteRequest updateNoteRequest)
+    {   
+        // validations
+        var user = await _userRepo.CheckUserByIdAsync(updateNoteRequest.UserId);
+        if (user == null) return NotFound("User not found");
+        
+        // since now the request is valid so we can update
+        var currentNote = await this._context.Notes.FindAsync(updateNoteRequest.Id);
+        if (currentNote == null) return NotFound("Current Note not found.");
+        if (currentNote.UserId != updateNoteRequest.UserId) return Unauthorized($"User with id #{updateNoteRequest.Id} is authorized to access note with id #{updateNoteRequest.Id}");
+        // we need to update the currentNote
+        currentNote.Title = updateNoteRequest.Title;
+        currentNote.Content = updateNoteRequest.Content;
+        await this._context.SaveChangesAsync();
+        return Ok($"Note with id #{updateNoteRequest.Id} has updated successfully");
+    }
+
+    [HttpGet]
+    [Route("{noteId:int}")]
+    public async Task<IActionResult> GetNoteById([FromRoute] int noteId, [FromQuery] int userId)
+    {
+        var note = await this._context.Notes.FindAsync(noteId);
+        if (note == null) return NotFound($"Note with id #{noteId} not found.");
+        if (note.UserId != userId) return Unauthorized($"User with id #{userId} has no access to note with id ${noteId}");
+        return Ok(note);
+    }
 }

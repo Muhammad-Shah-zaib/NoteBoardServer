@@ -5,13 +5,13 @@ using Pomelo.EntityFrameworkCore.MySql.Scaffolding.Internal;
 
 namespace NoteBoardServer.Models;
 
-public partial class NoteBoardDbContext : DbContext
+public partial class NoteboardContext : DbContext
 {
-    public NoteBoardDbContext()
+    public NoteboardContext()
     {
     }
 
-    public NoteBoardDbContext(DbContextOptions<NoteBoardDbContext> options)
+    public NoteboardContext(DbContextOptions<NoteboardContext> options)
         : base(options)
     {
     }
@@ -38,7 +38,7 @@ public partial class NoteBoardDbContext : DbContext
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.Content).HasColumnName("content");
             entity.Property(e => e.Title)
-                .HasMaxLength(50)
+                .HasMaxLength(32)
                 .HasColumnName("title");
             entity.Property(e => e.UserId).HasColumnName("userId");
 
@@ -54,20 +54,22 @@ public partial class NoteBoardDbContext : DbContext
 
             entity.HasIndex(e => e.Email, "email").IsUnique();
 
+            entity.HasIndex(e => e.Username, "username").IsUnique();
+
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.Email)
-                .HasMaxLength(100)
+                .HasMaxLength(155)
                 .HasColumnName("email");
+            entity.Property(e => e.EmailVerified).HasColumnName("email_verified");
             entity.Property(e => e.Firstname)
                 .HasMaxLength(50)
                 .HasColumnName("firstname");
             entity.Property(e => e.Lastname)
                 .HasMaxLength(50)
                 .HasColumnName("lastname");
-            entity.Property(e => e.Password)
-                .HasMaxLength(132)
-                .HasColumnName("password");
-            entity.Property(e => e.VerifiedEmail).HasColumnName("verified_email");
+            entity.Property(e => e.Username)
+                .HasMaxLength(155)
+                .HasColumnName("username");
         });
 
         OnModelCreatingPartial(modelBuilder);

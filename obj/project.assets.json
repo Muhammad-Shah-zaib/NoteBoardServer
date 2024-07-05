@@ -2760,11 +2760,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/pace_setter/RiderProjects/DSA/NoteBoardServer/NoteBoardServer.csproj",
+      "projectUniqueName": "/home/pace_setter/RiderProjects/NoteBoardServer/NoteBoardServer.csproj",
       "projectName": "NoteBoardServer",
-      "projectPath": "/home/pace_setter/RiderProjects/DSA/NoteBoardServer/NoteBoardServer.csproj",
+      "projectPath": "/home/pace_setter/RiderProjects/NoteBoardServer/NoteBoardServer.csproj",
       "packagesPath": "/home/pace_setter/.nuget/packages/",
-      "outputPath": "/home/pace_setter/RiderProjects/DSA/NoteBoardServer/obj/",
+      "outputPath": "/home/pace_setter/RiderProjects/NoteBoardServer/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/pace_setter/.nuget/NuGet/NuGet.Config"
@@ -2839,7 +2839,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/home/pace_setter/.dotnet/sdk/8.0.302/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.105/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

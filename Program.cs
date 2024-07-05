@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using NoteBoardServer.Models;
+using NoteBoardServer.repositories;
+using NoteBoardServer.services;
 
 var builder = WebApplication.CreateBuilder(args);
 const string FRONTEND_POLICY = "FRONTEND";
@@ -9,6 +11,9 @@ const string FRONTEND_URL = "http://localhost:5173"; // the frontend host
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddControllers();
+
+// DIs
+builder.Services.AddScoped<IUserRepository, UserService>();
 
 // adding cors
 builder.Services.AddCors(b =>
@@ -25,7 +30,7 @@ builder.Services.AddCors(b =>
 
 // getting connection String
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddDbContext<NoteBoardDbContext>(options =>
+builder.Services.AddDbContext<NoteboardContext>(options =>
 {
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
     options.LogTo(Console.WriteLine, LogLevel.Information);
