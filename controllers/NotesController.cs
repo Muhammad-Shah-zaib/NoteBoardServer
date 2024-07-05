@@ -10,22 +10,27 @@ namespace NoteBoardServer.controllers;
 
 [ApiController]
 [Route("/api/[controller]")]
-public class NotesController (NoteboardContext context, IUserRepository userRepository): ControllerBase
+public class NotesController(NoteboardContext context, IUserRepository userRepository) : ControllerBase
 {
     private readonly NoteboardContext _context = context;
     private readonly IUserRepository _userRepo = userRepository;
-    
-    [HttpGet]
-    public async Task<IActionResult> GetNotes([FromQuery] int userId)
-    {
-        var notes = this._context.Notes;
 
-        return Ok(
-            await notes
-                .Where(n => n.UserId == userId)
-                .OrderByDescending(n => n.Id)
-                .ToListAsync()
-            );
+    [HttpGet]
+    public async Task<ActionResult<IEnumerable<SingleNoteDto>>> GetNotes([FromQuery] int userId)
+    {
+        var notes = this._context.Notes
+            .Where(n => n.UserId == userId)
+            .OrderByDescending(n => n.Id);
+
+        return Ok(await notes
+            .Select(n => new SingleNoteDto()
+            {
+                Id = n.Id,
+                Content = n.Content,
+                Title = n.Title,
+                UserId = n.UserId
+            })
+            .ToListAsync());
     }
 
     [HttpPost]
@@ -43,13 +48,14 @@ public class NotesController (NoteboardContext context, IUserRepository userRepo
                 });
             // validation for userId
             var user = await this._context.Users.FindAsync(addNoteRequestDto.UserId);
-            if (user == null) return NotFound(new AddNoteResponseDto()
-            {
-                StatusCode = 404,
-                Ok = false,
-                Message = $"User with id {addNoteRequestDto.UserId} not found.",
-                Error = ["The userId provided is not correct since the user is not registered in db."]
-            });
+            if (user == null)
+                return NotFound(new AddNoteResponseDto()
+                {
+                    StatusCode = 404,
+                    Ok = false,
+                    Message = $"User with id {addNoteRequestDto.UserId} not found.",
+                    Error = ["The userId provided is not correct since the user is not registered in db."]
+                });
             await this._context.Notes.AddAsync(new Note()
             {
                 Title = addNoteRequestDto.Title,
@@ -68,14 +74,15 @@ public class NotesController (NoteboardContext context, IUserRepository userRepo
                     UserId = n.UserId
                 })
                 .FirstOrDefaultAsync();
-            return Ok(new AddNoteResponseDto()
+            var response = new AddNoteResponseDto()
             {
                 StatusCode = 200,
                 Ok = true,
                 Message = $"Note with title {addNoteRequestDto.Title} has been added successfully",
                 Note = newNote!, // if newNote was null then error would have been thrown
                 Error = new List<string>()
-            });
+            };
+            return Ok(response);
         }
         catch (Exception e)
         {
@@ -91,30 +98,105 @@ public class NotesController (NoteboardContext context, IUserRepository userRepo
     }
 
     [HttpPut]
-    public async Task<IActionResult> UpdateNote([FromBody] UpdateNoteRequest updateNoteRequest)
-    {   
-        // validations
-        var user = await _userRepo.CheckUserByIdAsync(updateNoteRequest.UserId);
-        if (user == null) return NotFound("User not found");
-        
-        // since now the request is valid so we can update
-        var currentNote = await this._context.Notes.FindAsync(updateNoteRequest.Id);
-        if (currentNote == null) return NotFound("Current Note not found.");
-        if (currentNote.UserId != updateNoteRequest.UserId) return Unauthorized($"User with id #{updateNoteRequest.Id} is authorized to access note with id #{updateNoteRequest.Id}");
-        // we need to update the currentNote
-        currentNote.Title = updateNoteRequest.Title;
-        currentNote.Content = updateNoteRequest.Content;
+    [Route("{noteId:int}")]
+    public async Task<IActionResult> UpdateNote([FromRoute] int noteId, [FromQuery] int userId,
+        [FromBody] UpdateNoteRequestDto updateNoteRequestDto)
+    {
+        // VALIDATING USER
+        var user = await _userRepo.CheckUserByIdAsync(userId);
+        if (user == null)
+            return NotFound(new UpdateNoteResponseDto()
+            {
+                StatusCode = 404,
+                Ok = false,
+                Message = $"user with id #{userId} not Found.",
+                Error = [$"user-id #{userId} is not valid"]
+            });
+
+        // VALIDATING NOTE
+        var currentNote = await this._context.Notes.FindAsync(noteId);
+        if (currentNote == null)
+            return NotFound(new UpdateNoteResponseDto()
+            {
+                StatusCode = 404,
+                Ok = false,
+                Message = $"Note with id #{noteId} not found",
+                Error = [$"note-id #{noteId} is not valid"]
+            });
+
+        // VALIDATING USER IS AUTHORIZED FOR THE GIVEN NOTE OR NOT
+        if (currentNote.UserId != userId)
+            return Unauthorized(new UpdateNoteResponseDto()
+            {
+                StatusCode = 401,
+                Ok = false,
+                Message = $"User with id #{noteId} is authorized to access note with id #{noteId}",
+                Error = [$"No tuple found with user-id #{userId} and note-id #{noteId}"]
+            });
+
+        // UPDATING THE NOTE
+        currentNote.Title = updateNoteRequestDto.Title;
+        currentNote.Content = updateNoteRequestDto.Content;
         await this._context.SaveChangesAsync();
-        return Ok($"Note with id #{updateNoteRequest.Id} has updated successfully");
+
+        // RETURNING THE 200 RESPONSE
+        var response = new UpdateNoteResponseDto()
+        {
+            StatusCode = 200,
+            Ok = true,
+            Message = $"Note #{noteId} has been updated successfully",
+            Id = noteId,
+            UserId = userId,
+            Content = updateNoteRequestDto.Content,
+            Title = updateNoteRequestDto.Title,
+            Error = new List<string>()
+        };
+        return Ok(response);
     }
 
     [HttpGet]
     [Route("{noteId:int}")]
-    public async Task<IActionResult> GetNoteById([FromRoute] int noteId, [FromQuery] int userId)
+    public async Task<ActionResult<GetSingleNoteResponseDto>> GetNoteById([FromRoute] int noteId,
+        [FromQuery] int userId)
     {
+        // GETTING THE NOTE
         var note = await this._context.Notes.FindAsync(noteId);
-        if (note == null) return NotFound($"Note with id #{noteId} not found.");
-        if (note.UserId != userId) return Unauthorized($"User with id #{userId} has no access to note with id ${noteId}");
-        return Ok(note);
+
+        // VALIDATING NOTE
+        if (note == null)
+            return NotFound(new GetSingleNoteResponseDto()
+            {
+                Ok = false,
+                StatusCode = 404,
+                Message = $"Note with id #{noteId} not found.",
+                Error = [$"note-id #{noteId} is not valid."]
+            });
+
+        // VALIDATING USER ACCESS FOR NOTE
+        if (note.UserId != userId)
+            return Unauthorized(new GetSingleNoteResponseDto()
+            {
+                Ok = false,
+                StatusCode = 401,
+                Message = $"User with id #{userId} has no access to note with id ${noteId}",
+                Error = [$"No tuple found with note-id #{noteId} and user-id #{userId}"]
+            });
+
+        // RETURNING RESPONSE
+        var response = new GetSingleNoteResponseDto()
+        {
+            Ok = true,
+            StatusCode = 200,
+            Message = $"Note with id #{noteId} is fetched successfully",
+            Error = [],
+            Note = new SingleNoteDto()
+            {
+                Id = note.Id,
+                UserId = note.UserId,
+                Title = note.Title,
+                Content = note.Content,
+            }
+        };
+        return Ok(response);
     }
 }
