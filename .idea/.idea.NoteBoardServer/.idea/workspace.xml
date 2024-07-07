@@ -9,37 +9,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e6af1e9a-1c67-4980-8282-be0adaf14d5c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Models/DTOs/Notes/UpdateNoteRequest.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/repositories/IUserRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/UserService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.NoteBoardServer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NoteBoardServer/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/NoteBoardDbContext.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/User.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Debug/net8.0/NoteBoardServer" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/net8.0/NoteBoardServer" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/DTOs/Notes/UpdateNoteResponseDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/DTOs/Notes/UpdateNoteResponseDto.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/Debug/net8.0/NoteBoardServer.dll" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/net8.0/NoteBoardServer.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/Debug/net8.0/NoteBoardServer.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/net8.0/NoteBoardServer.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/NotesController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/NotesController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0/NoteBoar.CFF3DF00.Up2Date" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0/NoteBoardServer.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0/NoteBoardServer.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0/NoteBoardServer.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0/NoteBoardServer.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0/NoteBoardServer.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0/NoteBoardServer.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0/NoteBoardServer.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0/NoteBoardServer.assets.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0/NoteBoardServer.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0/NoteBoardServer.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0/NoteBoardServer.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0/NoteBoardServer.csproj.FileListAbsolute.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0/NoteBoardServer.dll" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0/NoteBoardServer.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0/NoteBoardServer.genruntimeconfig.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0/NoteBoardServer.genruntimeconfig.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0/NoteBoardServer.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0/NoteBoardServer.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0/NoteBoardServer.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0/NoteBoardServer.sourcelink.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0/apphost" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0/apphost" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0/ref/NoteBoardServer.dll" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0/ref/NoteBoardServer.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0/refint/NoteBoardServer.dll" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0/refint/NoteBoardServer.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/NoteBoardServer.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/obj/NoteBoardServer.csproj.nuget.dgspec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/project.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/obj/project.packagespec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/obj/rider.project.model.nuget.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/obj/rider.project.restore.info" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,7 +46,7 @@
   &quot;keyToString&quot;: {
     &quot;.NET Launch Settings Profile.NoteBoardServer: http.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;working-shahzaib&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -125,6 +107,8 @@
       <workItem from="1719852648354" duration="598000" />
       <workItem from="1719907780586" duration="8703000" />
       <workItem from="1720090793820" duration="5560000" />
+      <workItem from="1720184763327" duration="10581000" />
+      <workItem from="1720254855902" duration="7969000" />
     </task>
     <servers />
   </component>

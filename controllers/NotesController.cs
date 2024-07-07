@@ -99,7 +99,7 @@ public class NotesController(NoteboardContext context, IUserRepository userRepos
 
     [HttpPut]
     [Route("{noteId:int}")]
-    public async Task<IActionResult> UpdateNote([FromRoute] int noteId, [FromQuery] int userId,
+    public async Task<ActionResult<UpdateNoteResponseDto>> UpdateNote([FromRoute] int noteId, [FromQuery] int userId,
         [FromBody] UpdateNoteRequestDto updateNoteRequestDto)
     {
         // VALIDATING USER
@@ -138,17 +138,33 @@ public class NotesController(NoteboardContext context, IUserRepository userRepos
         currentNote.Title = updateNoteRequestDto.Title;
         currentNote.Content = updateNoteRequestDto.Content;
         await this._context.SaveChangesAsync();
-
+        
+        // now we can fetch the notes again
         // RETURNING THE 200 RESPONSE
+        var notes = await this._context.Notes
+            .Where(n => n.UserId == userId)
+            .Select(n => new SingleNoteDto()
+            {
+                Content = n.Content,
+                Title = n.Title,
+                Id = n.Id,
+                UserId = n.UserId
+            })
+            .OrderByDescending(n=> n.Id)
+            .ToListAsync();
         var response = new UpdateNoteResponseDto()
         {
             StatusCode = 200,
             Ok = true,
             Message = $"Note #{noteId} has been updated successfully",
-            Id = noteId,
-            UserId = userId,
-            Content = updateNoteRequestDto.Content,
-            Title = updateNoteRequestDto.Title,
+            Note = new SingleNoteDto()
+            {
+                Id = noteId,
+                UserId = userId,
+                Content = updateNoteRequestDto.Content,
+                Title = updateNoteRequestDto.Title,
+            },
+            Notes = notes,
             Error = new List<string>()
         };
         return Ok(response);
