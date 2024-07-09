@@ -1,10 +1,8 @@
-using System.Security;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NoteBoardServer.Models;
 using NoteBoardServer.Models.DTOs.Notes;
 using NoteBoardServer.repositories;
-using NoteBoardServer.services;
 
 namespace NoteBoardServer.controllers;
 
@@ -214,5 +212,73 @@ public class NotesController(NoteboardContext context, IUserRepository userRepos
             }
         };
         return Ok(response);
+    }
+
+    [HttpDelete]
+    [Route("{noteId:int}")]
+    public async Task<ActionResult<DeleteResponseDto>> DeleteNote([FromRoute] int noteId, [FromQuery] int userId)
+    {
+        try
+        {
+            var note = await this._context.Notes.FindAsync(noteId);
+        
+            // VALIDATIONS
+            if (note == null)
+                return NotFound(new DeleteResponseDto()
+                {
+                    Ok = false,
+                    StatusCode = 404,
+                    Message = "Requested Note not found",
+                    Error = [$"Note id #{noteId} is not valid"]
+                });
+
+            if (note.UserId != userId)
+            {
+                return Unauthorized(new DeleteResponseDto()
+                {
+                    Ok = false,
+                    StatusCode = 401,
+                    Message = "Requested use has no access to provided note",
+                    Error = [$"User with id ${userId} has no access to note with id ${noteId}"]
+                });
+            }
+        
+            // NOW WE CAN DELETE THE NOTE
+            this._context.Notes.Remove(note);
+            await this._context.SaveChangesAsync();
+            
+            // GET THE UPDATED NOTES NOW
+            var notes = await this._context.Notes
+                .Where(n => n.UserId == userId)
+                .Select(n => new SingleNoteDto()
+                {
+                    UserId = n.UserId,
+                    Id = n.Id,
+                    Title = n.Title,
+                    Content = n.Content
+                })
+                .ToListAsync();
+            Console.WriteLine("asdfafda=> " + notes.Count);
+            return Ok(new DeleteResponseDto()
+            {
+                Ok = true,
+                Message = $"Note with id #{noteId} has been deleted successfully",
+                StatusCode = 200,
+                Notes = notes,
+                Error = []
+            });
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            return StatusCode(505, new DeleteResponseDto()
+            {
+                Ok = false,
+                StatusCode = 505,
+                Message = "Something went wrong, please try again later",
+                Error = []
+            });
+        }
+        
     }
 }

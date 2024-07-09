@@ -9,8 +9,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e6af1e9a-1c67-4980-8282-be0adaf14d5c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Models/DTOs/Notes/DeleteResponseDto.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.NoteBoardServer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NoteBoardServer/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/DTOs/Notes/UpdateNoteResponseDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/DTOs/Notes/UpdateNoteResponseDto.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/Debug/net8.0/NoteBoardServer.dll" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/net8.0/NoteBoardServer.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/Debug/net8.0/NoteBoardServer.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/net8.0/NoteBoardServer.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/NotesController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/NotesController.cs" afterDir="false" />
@@ -109,6 +109,8 @@
       <workItem from="1720090793820" duration="5560000" />
       <workItem from="1720184763327" duration="10581000" />
       <workItem from="1720254855902" duration="7969000" />
+      <workItem from="1720445725874" duration="9899000" />
+      <workItem from="1720509448158" duration="327000" />
     </task>
     <servers />
   </component>
