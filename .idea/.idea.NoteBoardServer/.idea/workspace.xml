@@ -9,11 +9,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e6af1e9a-1c67-4980-8282-be0adaf14d5c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Models/DTOs/Notes/DeleteResponseDto.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Models/DTOs/whiteboard/AddWhiteboardRequestDto.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Models/DTOs/whiteboard/AddWhiteboardResponseDto.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Models/DTOs/whiteboard/SingleWhiteboardDto.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Models/Whitboard.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/controllers/WhiteboardController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.NoteBoardServer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NoteBoardServer/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/NoteboardContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/NoteboardContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/User.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/Debug/net8.0/NoteBoardServer.dll" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/net8.0/NoteBoardServer.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/Debug/net8.0/NoteBoardServer.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/net8.0/NoteBoardServer.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/NotesController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/NotesController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0/NoteBoardServer.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0/NoteBoardServer.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0/NoteBoardServer.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0/NoteBoardServer.AssemblyInfoInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0/NoteBoardServer.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0/NoteBoardServer.csproj.CoreCompileInputs.cache" afterDir="false" />
@@ -38,6 +43,9 @@
   &quot;associatedIndex&quot;: 5
 }</component>
   <component name="ProjectId" id="2icDiIClg3zY7196je7OwyYxtP1" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -45,6 +53,7 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;.NET Launch Settings Profile.NoteBoardServer: http.executor&quot;: &quot;Run&quot;,
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;working-shahzaib&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
@@ -52,6 +61,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -110,7 +120,10 @@
       <workItem from="1720184763327" duration="10581000" />
       <workItem from="1720254855902" duration="7969000" />
       <workItem from="1720445725874" duration="9899000" />
-      <workItem from="1720509448158" duration="327000" />
+      <workItem from="1720509448158" duration="1568000" />
+      <workItem from="1720684140302" duration="693000" />
+      <workItem from="1720776626270" duration="1661000" />
+      <workItem from="1720778332649" duration="1404000" />
     </task>
     <servers />
   </component>
@@ -119,6 +132,7 @@
   </component>
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
 </project>
