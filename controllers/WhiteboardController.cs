@@ -92,7 +92,66 @@ public class WhiteboardController(NoteboardContext context): ControllerBase
                 Error = [ e.ToString() ]
             });
         }
-    } 
+    }
+
+    [HttpPut]
+    [Route("{whiteboardId:int}")]
+    public async Task<IActionResult> UpdateWhiteboard(
+        [FromRoute] int whiteboardId, 
+        [FromQuery] int userId,
+        [FromBody] UpdateWhiteboardRequestDto updateWhiteboardRequestDto)
+    {
+        // VALIDATIONS
+        var whiteboard = await this._context.Whitboards.FindAsync(whiteboardId);
+        if (whiteboard == null) return NotFound(new UpdateWhiteboardResponseDto()
+        {
+            Ok = false,
+            StatusCode = 404,
+            Message = "Whiteboard not found",
+            Error = [$"Invalid whiteboard-id #{whiteboardId}"]
+        });
+        if (whiteboard.UserId != userId) return Unauthorized(new UpdateWhiteboardResponseDto()
+        {
+            Ok = false,
+            StatusCode = 401,
+            Message = "You are not authorized to update this whiteboard",
+            Error = [$"Noi tuple found with whiteboard-id #{whiteboardId} and userId #{userId}"]
+        });
+        
+        // NOW WE CAN UPDATE THE WHITEBOARD
+        whiteboard.Title = updateWhiteboardRequestDto.Title;
+        whiteboard.ImageUrl = updateWhiteboardRequestDto.ImageUrl;
+        
+        // SAVING CHANGES
+        await this._context.SaveChangesAsync();
+        
+        // GETTING NEW LIST OF WHITEBOARDS
+        var whiteboards = await this._context.Whitboards.Where(wb => wb.UserId == userId)
+            .OrderByDescending(wb => wb.Id)
+            .Select(wb => new SingleWhiteboardDto()
+            {
+                Id = wb.Id,
+                Title = wb.Title,
+                ImageUrl = wb.ImageUrl,
+                UserId = wb.UserId
+            })
+            .ToListAsync();
+        return Ok(new UpdateWhiteboardResponseDto()
+        {
+            Ok = true,
+            StatusCode = 200,
+            Message = $"Whiteboard #{whiteboardId} updated successfully",
+            Whiteboard = new SingleWhiteboardDto()
+            {
+                Id = whiteboard.Id,
+                Title = whiteboard.Title,
+                ImageUrl = whiteboard.ImageUrl,
+                UserId = whiteboard.UserId
+            },
+            Whiteboards = whiteboards,
+            Error = []
+        });
+    }
 }
 
 
