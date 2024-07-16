@@ -9,9 +9,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e6af1e9a-1c67-4980-8282-be0adaf14d5c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Models/DTOs/whiteboard/UpdateWhiteboardRequestDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/DTOs/whiteboard/UpdateWhiteboardResponseDto.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vscode/launch.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vscode/tasks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Models/DTOs/whiteboard/DeleteWhiteboardResponseDto.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/obj/Debug/net8.0/project.razor.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.NoteBoardServer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NoteBoardServer/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/NoteboardContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/NoteboardContext.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/Debug/net8.0/NoteBoardServer.dll" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/net8.0/NoteBoardServer.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/Debug/net8.0/NoteBoardServer.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/net8.0/NoteBoardServer.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/WhiteboardController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/WhiteboardController.cs" afterDir="false" />
@@ -122,7 +125,9 @@
       <workItem from="1720778332649" duration="1404000" />
       <workItem from="1720870823615" duration="3749000" />
       <workItem from="1720968010298" duration="1174000" />
-      <workItem from="1721052187070" duration="2479000" />
+      <workItem from="1721052187070" duration="3147000" />
+      <workItem from="1721125935442" duration="857000" />
+      <workItem from="1721157455939" duration="2136000" />
     </task>
     <servers />
   </component>

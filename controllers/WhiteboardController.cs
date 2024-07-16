@@ -151,7 +151,72 @@ public class WhiteboardController(NoteboardContext context): ControllerBase
             Whiteboards = whiteboards,
             Error = []
         });
+
+        
+    }
+    [HttpDelete]
+    [Route("{whiteboardId:int}")]
+    public async Task<ActionResult<DeleteWhiteboardResponseDto>> DeleteWhiteboard([FromRoute] int whiteboardId, [FromQuery] int userId)
+    {
+        try
+        {
+            // getting whiteboard
+            var whiteboard = await this._context.Whitboards.FindAsync(whiteboardId);
+
+            // VALIDATIONS
+            if (whiteboard == null) return NotFound(new DeleteWhiteboardResponseDto()
+            {
+                StatusCode = 404,
+                Ok = false,
+                Message = $"Whiteboard #{whiteboardId} not found.",
+                Error = [$"given whiteboard-id #{whiteboardId} is incorrect."],
+                Whiteboard = null,
+                Whiteboards = []
+            });
+            if (whiteboard.UserId != userId) return Unauthorized(new DeleteWhiteboardResponseDto()
+            {
+                StatusCode = 401,
+                Ok = false,
+                Message = "You are not authorized to delete this whiteboard",
+                Error = [$"No tuple found with whiteboard-id #{whiteboardId} and userId #{userId}"],
+                Whiteboard = null,
+                Whiteboards = []
+            });
+            
+            // NOW WE CAN DELETE THE WHITEBOARD
+            this._context.Whitboards.Remove(whiteboard);
+            await this._context.SaveChangesAsync();
+            var whiteboards = await this._context.Whitboards.Where(wb => wb.UserId == userId)
+                .Select(wb => new SingleWhiteboardDto()
+                {
+                    Id = wb.Id,
+                    Title = wb.Title,
+                    ImageUrl = wb.ImageUrl,
+                    UserId = wb.UserId
+                })
+                .OrderByDescending(wb => wb.Id)
+                .ToListAsync();
+            return Ok(new DeleteWhiteboardResponseDto()
+            {
+                StatusCode = 200,
+                Ok = true,
+                Message = $"Whiteboard #{whiteboardId} deleted successfully",
+                Error = [],
+                Whiteboard = new SingleWhiteboardDto()
+                {
+                    Id = whiteboard.Id,
+                    Title = whiteboard.Title,
+                    ImageUrl = whiteboard.ImageUrl,
+                    UserId = whiteboard.UserId
+                },
+                Whiteboards = whiteboards
+            });
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
     }
 }
-
 
