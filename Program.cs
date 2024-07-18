@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using NoteBoardServer.configuration;
 using NoteBoardServer.Models;
 using NoteBoardServer.repositories;
 using NoteBoardServer.services;
@@ -14,7 +15,8 @@ builder.Services.AddControllers();
 
 // DIs
 builder.Services.AddScoped<IUserRepository, UserService>();
-
+builder.Services.AddScoped<EmailService>();
+builder.Services.Configure<SmtpSettings>(builder.Configuration.GetSection("SmtpSettings"));
 // adding cors
 builder.Services.AddCors(b =>
 {
