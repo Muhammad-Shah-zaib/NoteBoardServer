@@ -2,16 +2,18 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NoteBoardServer.Models;
 using NoteBoardServer.Models.DTOs.Auth;
+using NoteBoardServer.repositories;
 using NoteBoardServer.services;
 
 namespace NoteBoardServer.controllers;
 
 [ApiController]
 [Route("/api/[controller]")]
-public class UserController(NoteboardContext context, EmailService emailService): ControllerBase
+public class UserController(NoteboardContext context, EmailService emailService, IUserRepository userRepository): ControllerBase
 {
     private readonly NoteboardContext _context = context;
     private readonly EmailService _emailService = emailService;
+    private readonly IUserRepository _userRepository = userRepository;
     
     [HttpPost]
     [Route("Register")]
@@ -72,9 +74,11 @@ public class UserController(NoteboardContext context, EmailService emailService)
     // TESTING EMAIL
     public async Task<IActionResult> TestEmail()
     {
-        const string subject = "TESTING";
-        const string body = "<h1>Hello world, This is just a testing mail</h1>";
-        await this._emailService.SendEmailAsync(email: "ali.hassam1@gmail.com",subject, body);
+        var mail = this._userRepository.GenerateRegisterEmailAsync("mshahzab.bscs23seecs@seecs.edu.pk", "Muhammad Shahzaib");
+        Console.WriteLine(mail.ReceiverEmail);
+        Console.WriteLine(mail.Body);
+        Console.WriteLine(mail.ReceiverEmail);
+        await this._emailService.SendEmailAsync(mail.ReceiverEmail, mail.Subject, mail.Body);
         return Ok("SUCCESS");
     }
     

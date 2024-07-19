@@ -9,39 +9,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e6af1e9a-1c67-4980-8282-be0adaf14d5c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/bin/Debug/net8.0/BouncyCastle.Cryptography.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/Debug/net8.0/MailKit.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/Debug/net8.0/MimeKit.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/Debug/net8.0/System.Formats.Asn1.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/configuration/SmtpSettings.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/obj/Debug/net8.0/NoteBoardServer.csproj.CopyComplete" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/EmailService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Models/DTOs/Email/MailDto.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/GenerateUniqueToken.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.NoteBoardServer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NoteBoardServer/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NoteBoardServer.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/NoteBoardServer.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/appsettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Debug/net8.0/NoteBoardServer.deps.json" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/net8.0/NoteBoardServer.deps.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/Debug/net8.0/NoteBoardServer.dll" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/net8.0/NoteBoardServer.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/Debug/net8.0/NoteBoardServer.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/net8.0/NoteBoardServer.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Debug/net8.0/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/net8.0/appsettings.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/UserController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/UserController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0/NoteBoardServer.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0/NoteBoardServer.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0/NoteBoardServer.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0/NoteBoardServer.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0/NoteBoardServer.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0/NoteBoardServer.assets.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0/NoteBoardServer.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0/NoteBoardServer.csproj.AssemblyReference.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0/NoteBoardServer.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0/NoteBoardServer.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0/NoteBoardServer.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0/NoteBoardServer.csproj.FileListAbsolute.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0/NoteBoardServer.dll" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0/NoteBoardServer.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0/NoteBoardServer.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0/NoteBoardServer.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0/NoteBoardServer.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0/NoteBoardServer.sourcelink.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0/ref/NoteBoardServer.dll" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0/ref/NoteBoardServer.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0/refint/NoteBoardServer.dll" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0/refint/NoteBoardServer.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/NoteBoardServer.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/obj/NoteBoardServer.csproj.nuget.dgspec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/project.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/obj/project.packagespec.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/obj/rider.project.model.nuget.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/obj/rider.project.restore.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/repositories/IUserRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/repositories/IUserRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/UserService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/services/UserService.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,28 +49,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    ".NET Launch Settings Profile.NoteBoardServer: http.executor": "Debug",
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "working-shahzaib",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;.NET Launch Settings Profile.NoteBoardServer: http.executor&quot;: &quot;Run&quot;,
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;working-shahzaib&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "rider.external.source.directories": [
-      "/home/pace_setter/.config/JetBrains/Rider2024.1/resharper-host/DecompilerCache",
-      "/home/pace_setter/.config/JetBrains/Rider2024.1/resharper-host/SourcesCache",
-      "/home/pace_setter/.local/share/Symbols/src"
+  &quot;keyToStringList&quot;: {
+    &quot;rider.external.source.directories&quot;: [
+      &quot;/home/pace_setter/.config/JetBrains/Rider2024.1/resharper-host/DecompilerCache&quot;,
+      &quot;/home/pace_setter/.config/JetBrains/Rider2024.1/resharper-host/SourcesCache&quot;,
+      &quot;/home/pace_setter/.local/share/Symbols/src&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected=".NET Launch Settings Profile.NoteBoardServer: http">
     <configuration name="NoteBoardServer: http" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/NoteBoardServer.csproj" />
@@ -145,7 +129,8 @@
       <workItem from="1721125935442" duration="857000" />
       <workItem from="1721157455939" duration="2242000" />
       <workItem from="1721295379669" duration="4067000" />
-      <workItem from="1721320724586" duration="4586000" />
+      <workItem from="1721320724586" duration="5894000" />
+      <workItem from="1721391293775" duration="1154000" />
     </task>
     <servers />
   </component>
