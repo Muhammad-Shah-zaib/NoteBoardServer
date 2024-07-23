@@ -213,4 +213,3 @@
 /home/pace_setter/RiderProjects/NoteBoardServer/bin/Debug/net8.0/BouncyCastle.Cryptography.dll
 /home/pace_setter/RiderProjects/NoteBoardServer/bin/Debug/net8.0/MailKit.dll
 /home/pace_setter/RiderProjects/NoteBoardServer/bin/Debug/net8.0/MimeKit.dll
-/home/pace_setter/RiderProjects/NoteBoardServer/bin/Debug/net8.0/System.Formats.Asn1.dll

@@ -9,5 +9,5 @@ public interface IUserRepository
     public Task<User?> CheckUserByIdAsync(int userId);
     
     // GENERATE REGISTER EMAIL WITH A UNIQUE TOKEN
-    public MailDto GenerateRegisterEmailAsync(string receiverEmail, string username = "User");
+    public MailDto GenerateRegisterEmail(string receiverEmail, string username = "User");
 }

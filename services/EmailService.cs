@@ -3,6 +3,7 @@ using MailKit.Security;
 using Microsoft.Extensions.Options;
 using MimeKit;
 using NoteBoardServer.configuration;
+using NoteBoardServer.Models.DTOs.Email;
 
 namespace NoteBoardServer.services;
 
@@ -11,17 +12,17 @@ public class EmailService (IOptions<SmtpSettings> smtpSettings, IWebHostEnvironm
     private readonly SmtpSettings _smtpSettings = smtpSettings.Value;
     private readonly IWebHostEnvironment _env = env;
 
-    public async Task SendEmailAsync(string email, string subject, string body)
+    public async Task SendEmailAsync(MailDto mailDto)
     {
         try
         {
             var message = new MimeMessage();
             message.From.Add(new MailboxAddress(_smtpSettings.SenderName, _smtpSettings.SenderEmail));
-            message.To.Add(new MailboxAddress("", email));
-            message.Subject = subject;
+            message.To.Add(new MailboxAddress(mailDto.Username, mailDto.ReceiverEmail));
+            message.Subject = mailDto.Subject;
             message.Body = new TextPart("html")
             {
-                Text = body
+                Text = mailDto.Body
             };
 
             using (var client = new SmtpClient())

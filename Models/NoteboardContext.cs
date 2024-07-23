@@ -16,6 +16,8 @@ public partial class NoteboardContext : DbContext
     {
     }
 
+    public virtual DbSet<AuthToken> AuthTokens { get; set; }
+
     public virtual DbSet<Note> Notes { get; set; }
 
     public virtual DbSet<User> Users { get; set; }
@@ -30,6 +32,29 @@ public partial class NoteboardContext : DbContext
         modelBuilder
             .UseCollation("utf8mb4_0900_ai_ci")
             .HasCharSet("utf8mb4");
+
+        modelBuilder.Entity<AuthToken>(entity =>
+        {
+            entity.HasKey(e => e.TokenId).HasName("PRIMARY");
+
+            entity.ToTable("AuthToken");
+
+            entity.HasIndex(e => e.UserId, "userId");
+
+            entity.Property(e => e.TokenId).HasColumnName("tokenId");
+            entity.Property(e => e.Token)
+                .HasMaxLength(255)
+                .HasColumnName("token");
+            entity.Property(e => e.TokenType)
+                .HasMaxLength(20)
+                .HasColumnName("token_type");
+            entity.Property(e => e.UserId).HasColumnName("userId");
+
+            entity.HasOne(d => d.User).WithMany(p => p.AuthTokens)
+                .HasForeignKey(d => d.UserId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("AuthToken_ibfk_1");
+        });
 
         modelBuilder.Entity<Note>(entity =>
         {

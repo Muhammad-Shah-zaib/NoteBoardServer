@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NoteBoardServer.Models;
 using NoteBoardServer.Models.DTOs.Auth;
+using NoteBoardServer.Models.DTOs.Email;
 using NoteBoardServer.repositories;
 using NoteBoardServer.services;
 
@@ -52,10 +53,26 @@ public class UserController(NoteboardContext context, EmailService emailService,
         };
         await this._context.Users.AddAsync(newUser);
         await this._context.SaveChangesAsync();
-
+        
+        // getting the mail dto for the registration email
+        var mailDto = this._userRepository.GenerateRegisterEmail(receiverEmail:newUser.Email, username: newUser.Username);
+        
+        // NOW WE NEED TO STORE THE TOKEN IN THE DB
+        await this._context.AuthTokens.AddAsync(new AuthToken()
+        {
+            Token = mailDto.Token,
+            UserId = newUser.Id,
+            TokenType = TokenTypeEnum.EMAIL_VERIFICATION.ToString(),
+        });
+        await this._context.SaveChangesAsync();
+        
+        // NOW WE NEED TO SEND THE EMAIL
+        await this._emailService.SendEmailAsync(mailDto);
+        
+        // RETURNING RESPONSE
         return Ok(new RegistrationResponseDto()
         {
-            Ok = true,
+            Ok = true,  
             Message = "Registration successful",
             Error = [],
             User = new SingleUserDto()
@@ -68,18 +85,24 @@ public class UserController(NoteboardContext context, EmailService emailService,
             }
         });
     }
-    
-    [HttpGet]
-    [Route("EmailTest")]
-    // TESTING EMAIL
-    public async Task<IActionResult> TestEmail()
+
+    [HttpPost]
+    [Route("VerifyEmail/{token}")]
+    public async Task<IActionResult> VerifyEmail([FromRoute] string token)
     {
-        var mail = this._userRepository.GenerateRegisterEmailAsync("mshahzab.bscs23seecs@seecs.edu.pk", "Muhammad Shahzaib");
-        Console.WriteLine(mail.ReceiverEmail);
-        Console.WriteLine(mail.Body);
-        Console.WriteLine(mail.ReceiverEmail);
-        await this._emailService.SendEmailAsync(mail.ReceiverEmail, mail.Subject, mail.Body);
-        return Ok("SUCCESS");
+        // validate is the token true or not
+        var authToken = await this._context.AuthTokens.FirstOrDefaultAsync(at => at.Token == token);
+        if (authToken == null) return Unauthorized();
+        
+        // lets get the user
+        var user = await this._context.Users.FindAsync(authToken.UserId);
+        if (user == null) return BadRequest();
+        
+        // verifying the email
+        user.EmailVerified = true;
+        await this._context.SaveChangesAsync();
+        
+        return Ok("EMAIL VERIFIED");
     }
     
 }

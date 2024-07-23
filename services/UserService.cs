@@ -16,7 +16,7 @@ public class UserService(NoteboardContext context): IUserRepository
     }
     
     // GENERATE REGISTER EMAIL
-    public MailDto GenerateRegisterEmailAsync(string receiverEmail, string username = "User")
+    public MailDto GenerateRegisterEmail(string receiverEmail, string username = "User")
     {
         var token = GenerateUniqueToken.GenerateToken();
         const string subject = "Email Verification from NoteBoard";
@@ -26,6 +26,8 @@ public class UserService(NoteboardContext context): IUserRepository
 
         return new MailDto()
         {
+            Token = token,
+            Username = username,
             ReceiverEmail = receiverEmail,
             Subject = subject,
             Body = body.ToString()

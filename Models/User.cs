@@ -17,6 +17,8 @@ public partial class User
 
     public bool EmailVerified { get; set; }
 
+    public virtual ICollection<AuthToken> AuthTokens { get; set; } = new List<AuthToken>();
+
     public virtual ICollection<Note> Notes { get; set; } = new List<Note>();
 
     public virtual ICollection<Whitboard> Whitboards { get; set; } = new List<Whitboard>();
