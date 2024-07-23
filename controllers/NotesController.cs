@@ -279,6 +279,5 @@ public class NotesController(NoteboardContext context, IUserRepository userRepos
                 Error = []
             });
         }
-        
     }
 }

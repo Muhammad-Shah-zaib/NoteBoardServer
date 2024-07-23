@@ -22,7 +22,7 @@ public class UserService(NoteboardContext context): IUserRepository
         const string subject = "Email Verification from NoteBoard";
         var body = new StringBuilder();
         body.Append($"<h1>Hello {username}</h1>");
-        body.Append($"<p><strong><a href=\"https://localhost:5173/verify-email/{token}\">Click here to verify your email</a></strong></p>");
+        body.Append($"<p><strong><a href=\"http://localhost:5173/verify-email/{token}\">Click here to verify your email</a></strong></p>");
 
         return new MailDto()
         {

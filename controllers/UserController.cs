@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NoteBoardServer.Models;
@@ -92,17 +93,43 @@ public class UserController(NoteboardContext context, EmailService emailService,
     {
         // validate is the token true or not
         var authToken = await this._context.AuthTokens.FirstOrDefaultAsync(at => at.Token == token);
-        if (authToken == null) return Unauthorized();
+        if (authToken == null) return Unauthorized(new VerifyEmailResponseDto()
+        {
+            Ok = false,
+            StatusCode = 401,
+            Message = "Invalid token",
+            Error = [$"No tuple found with token #{token}"],
+        });
         
         // lets get the user
         var user = await this._context.Users.FindAsync(authToken.UserId);
-        if (user == null) return BadRequest();
+        if (user == null) return NotFound(new VerifyEmailResponseDto()
+        {
+            Ok = false,
+            StatusCode = 404,
+            Message = "User not found",
+            Error = [$"User with id #{authToken.UserId} not found"],
+        });
         
         // verifying the email
         user.EmailVerified = true;
         await this._context.SaveChangesAsync();
         
-        return Ok("EMAIL VERIFIED");
+        return Ok(new VerifyEmailResponseDto()
+        {
+            Ok = true,
+            StatusCode = 200,
+            Message = "Email verified successfully",
+            Error = [],
+            UserDto = new SingleUserDto()
+            {
+                Id = user.Id,
+                Firstname = user.Firstname,
+                Lastname = (user.Lastname == null) ? user.Lastname : "",
+                Username = user.Username,
+                Email = user.Email,
+            }
+        });
     }
     
 }
