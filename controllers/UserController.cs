@@ -28,6 +28,7 @@ public class UserController(NoteboardContext context, EmailService emailService,
         var user = await this._context.Users.FirstOrDefaultAsync(u => u.Email == registrationRequestDto.Email);
         if (user != null) return Conflict(new RegistrationResponseDto()
         {
+            StatusCode = 409,
             Ok = false,
             Message = "User already exist with this Email",
             Error = [$"Email #{registrationRequestDto.Email} already exist"]
@@ -38,6 +39,7 @@ public class UserController(NoteboardContext context, EmailService emailService,
         user = await this._context.Users.FirstOrDefaultAsync(u => u.Username == registrationRequestDto.Username);
         if (user != null) return Conflict(new RegistrationResponseDto()
         {
+            StatusCode = 409,
             Ok = false,
             Message = "User already exist with this Username",
             Error = [$"Username #{registrationRequestDto.Username} already exist"]
@@ -73,6 +75,7 @@ public class UserController(NoteboardContext context, EmailService emailService,
         // RETURNING RESPONSE
         return Ok(new RegistrationResponseDto()
         {
+            StatusCode = 200,
             Ok = true,  
             Message = "Registration successful",
             Error = [],
