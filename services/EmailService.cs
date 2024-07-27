@@ -27,7 +27,6 @@ public class EmailService (IOptions<SmtpSettings> smtpSettings, IWebHostEnvironm
 
             using (var client = new SmtpClient())
             {
-                
                 await client.ConnectAsync("smtp.gmail.com", 587, SecureSocketOptions.StartTls);
                 await client.AuthenticateAsync( _smtpSettings.Username, _smtpSettings.Password);
                 await client.SendAsync(message);
