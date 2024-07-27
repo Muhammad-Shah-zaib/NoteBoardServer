@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("NoteBoardServer")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+063489a6e292c7600ed32d61bfc0b6a2be69fb35")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d10445554cb6ee3f9226c19add536df48b983b0d")]
 [assembly: System.Reflection.AssemblyProductAttribute("NoteBoardServer")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NoteBoardServer")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

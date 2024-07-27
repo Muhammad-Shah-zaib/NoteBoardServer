@@ -9,10 +9,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e6af1e9a-1c67-4980-8282-be0adaf14d5c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.NoteBoardServer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NoteBoardServer/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/net8.0/NoteBoardServer.dll" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/net8.0/NoteBoardServer.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/net8.0/NoteBoardServer.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/net8.0/NoteBoardServer.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0/NoteBoardServer.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0/NoteBoardServer.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0/NoteBoardServer.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0/NoteBoardServer.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/obj/rider.project.model.nuget.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/obj/rider.project.restore.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0/NoteBoardServer.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0/NoteBoardServer.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0/NoteBoardServer.dll" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0/NoteBoardServer.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0/NoteBoardServer.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0/NoteBoardServer.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0/NoteBoardServer.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0/NoteBoardServer.sourcelink.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0/ref/NoteBoardServer.dll" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0/ref/NoteBoardServer.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0/refint/NoteBoardServer.dll" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0/refint/NoteBoardServer.dll" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,7 +45,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    ".NET Launch Settings Profile.NoteBoardServer: http.executor": "Run",
+    ".NET Launch Settings Profile.NoteBoardServer: http.executor": "Debug",
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
@@ -122,6 +129,7 @@
       <workItem from="1721808478006" duration="610000" />
       <workItem from="1721833562479" duration="5388000" />
       <workItem from="1722059849186" duration="7000" />
+      <workItem from="1722059954931" duration="6118000" />
     </task>
     <servers />
   </component>
