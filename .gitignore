@@ -292,8 +292,6 @@ FakesAssemblies/
 node_modules/
 Models/
 obj/
-bin/
-.idea/
 
 # Visual Studio 6 build log
 *.plg
@@ -486,3 +484,4 @@ $RECYCLE.BIN/
 
 # Vim temporary swap files
 *.swp
+appsettings.json
