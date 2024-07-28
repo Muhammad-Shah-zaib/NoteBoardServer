@@ -204,7 +204,7 @@ public class UserController(NoteboardContext context, EmailService emailService,
     }
 
     [HttpGet]
-    [Route("VerifyLoginToken/{token}")]
+    [Route("VerifyLogin/{token}")]
     public async Task<IActionResult> VerifyLoginToken([FromRoute] string token)
     {
         try
@@ -240,7 +240,72 @@ public class UserController(NoteboardContext context, EmailService emailService,
             Console.WriteLine(e.Message);
             return StatusCode(500);
         }
+        
     }
+
+    [HttpPost]
+    [Route("VerifyCredentials")]
+    public async Task<IActionResult> VerifyCredentials([FromBody] VerifyCredentialsRequestDto verifyCredentialsRequestDto)
+    {
+        // NO NEED FOR MODEL-STATE VALIDATIONS
+        try
+        {
+            var user = await this._context.Users.FirstOrDefaultAsync(u => u.Id == verifyCredentialsRequestDto.Id);
+            if (user == null) return NotFound(new VerifyCredentialsResponseDto()
+            {
+                Ok = false,
+                StatusCode = 404,
+                Message = "User not found",
+                Error = [$"userId {verifyCredentialsRequestDto.Id} is incorrect"]
+            });
+            // now since we have the user we need to validate the user credentials
+            if (user.Username != verifyCredentialsRequestDto.Username) return BadRequest(new VerifyCredentialsResponseDto(){
+                Ok = false,
+                StatusCode = 400,
+                Message = "username is incorrect",
+                Error = ["Provided username does not match with the tuple"]
+            });
+            if (user.Firstname != verifyCredentialsRequestDto.Firstname) return BadRequest(new VerifyCredentialsResponseDto(){
+                Ok = false,
+                StatusCode = 400,
+                Message = "Firstname is incorrect",
+                Error = ["Provided firstname does not match with the tuple"]
+            });
+            if (user.Lastname != verifyCredentialsRequestDto.Lastname) return BadRequest(new VerifyCredentialsResponseDto(){
+                Ok = false,
+                StatusCode = 400,
+                Message = "Lastname is incorrect",
+                Error = ["Provided lastname does not match with the tuple"]
+            });
+            if (user.Email != verifyCredentialsRequestDto.Email) return BadRequest(new VerifyCredentialsResponseDto(){
+                Ok = false,
+                StatusCode = 400,
+                Message = "Email is incorrect",
+                Error = ["Provided email does not match with the tuple"]
+            });
+            // now since all the credentials are verified we can send the response
+            return Ok(new VerifyCredentialsResponseDto()
+            {
+                Ok = true,
+                StatusCode = 200,
+                Message = "Credentials verified successfully",
+                Error = [],
+                UserDto = new SingleUserDto()
+                {
+                    Id = user.Id,
+                    Firstname = user.Firstname,
+                    Lastname = user.Lastname,
+                    Username = user.Username,
+                    Email = user.Email,
+                }
+            });
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+    }    
 }
 
 
