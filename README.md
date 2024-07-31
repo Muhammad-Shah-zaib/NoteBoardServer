@@ -39,9 +39,15 @@ Welcome to the **Noteboard App**! This is a backend part of noteboard, for front
 
 ### Configuration
 
+append smtpsettings in appsettings.json
+
+``` js
 "SmtpSettings": {
-  "Host": "your_smtp_host",
-  "Port": "your_smtp_port",
-  "Username": "your_smtp_username",
-  "Password": "your_smtp_password"
-}
+    "Server": "your_smpty_server",
+    "Port": port_number,
+    "SenderName": "your_name",
+    "SenderEmail": "your_email",
+    "Username": "your_email",
+    "Password": "your_email_password"
+  }
+```
