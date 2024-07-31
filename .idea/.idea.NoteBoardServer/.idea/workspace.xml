@@ -8,7 +8,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e6af1e9a-1c67-4980-8282-be0adaf14d5c" name="Changes" comment="" />
+    <list default="true" id="e6af1e9a-1c67-4980-8282-be0adaf14d5c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.NoteBoardServer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NoteBoardServer/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -36,7 +38,7 @@
     &quot;.NET Launch Settings Profile.NoteBoardServer: http.executor&quot;: &quot;Debug&quot;,
     &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;working-shahzaib&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -117,7 +119,7 @@
       <workItem from="1721808478006" duration="610000" />
       <workItem from="1721833562479" duration="5388000" />
       <workItem from="1722059849186" duration="7000" />
-      <workItem from="1722059954931" duration="6118000" />
+      <workItem from="1722059954931" duration="6706000" />
     </task>
     <servers />
   </component>
