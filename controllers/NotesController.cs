@@ -250,6 +250,7 @@ public class NotesController(NoteboardContext context, IUserRepository userRepos
             // GET THE UPDATED NOTES NOW
             var notes = await this._context.Notes
                 .Where(n => n.UserId == userId)
+                .OrderByDescending(n => n.Id)
                 .Select(n => new SingleNoteDto()
                 {
                     UserId = n.UserId,
