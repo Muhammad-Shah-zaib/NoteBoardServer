@@ -7,7 +7,7 @@ Welcome to the **Noteboard App**! This is a backend part of noteboard, for front
 ## Features
 
 - **CRUD Operations**: Create, Read, Update, and Delete notes and whiteboards.
-- **User Management**: Associates notes with users.
+- **User Management**: Associates notes and whiteboards with users.
 - **Email Verification**: Simple authentication based on email verification.
 - **SMTP Integration**: Handles email requests for user verification.
 
