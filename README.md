@@ -17,6 +17,8 @@ Welcome to the **Noteboard App**! This is a backend part of noteboard, for front
 
 - [.NET Core SDK 8.0.2](https://dotnet.microsoft.com/download/dotnet/8.0)
 
+### Installation
+
  1. clone the repo
 ``` bash
   git clone https://github.com/Muhammad-Shah-zaib/NoteBoardServer
